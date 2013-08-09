@@ -204,7 +204,7 @@ public final class S3Wagon extends AbstractWagon {
 
             in = new TransferProgressFileInputStream(source, transferProgress);
 
-            this.amazonS3.putObject(new PutObjectRequest(this.bucketName, key, in, objectMetadata).withCannedAcl(CannedAccessControlList.PublicRead));
+            this.amazonS3.putObject(new PutObjectRequest(this.bucketName, key, in, objectMetadata).withCannedAcl(CannedAccessControlList.Private));
         } catch (AmazonServiceException e) {
             throw new TransferFailedException(String.format("Cannot write file to '%s'", destination), e);
         } catch (FileNotFoundException e) {
@@ -267,7 +267,7 @@ public final class S3Wagon extends AbstractWagon {
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(0);
 
-        return new PutObjectRequest(this.bucketName, key, inputStream, objectMetadata).withCannedAcl(CannedAccessControlList.PublicRead);
+        return new PutObjectRequest(this.bucketName, key, inputStream, objectMetadata).withCannedAcl(CannedAccessControlList.Private);
     }
 
 }

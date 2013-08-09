@@ -2,8 +2,8 @@
     <components>
         <component>
             <role>org.apache.maven.wagon.Wagon</role>
-            <role-hint>s3p</role-hint>
-            <implementation>org.springframework.aws.maven.PrivateS3Wagon</implementation>
+            <role-hint>s4p</role-hint>
+            <implementation>org.springframework.build.aws.maven.S3Wagon</implementation>
             <!-- <implementation>org.springframework.aws.maven.SimpleStorageServiceWagon</implementation> -->
             <instantiation-strategy>per-lookup</instantiation-strategy>
         </component>
